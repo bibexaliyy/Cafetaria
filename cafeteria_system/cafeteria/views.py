@@ -1,7 +1,7 @@
 import os
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from cafeteria.models import Student, Meal, MealTransaction
+from cafeteria.models import Student, Meal, MealTransaction,AdminRole
 from django.http import HttpResponse
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
@@ -44,7 +44,7 @@ def get_meals(request):
     return JsonResponse({"meals": meals})
 
 
-@csrf_exempt  # Remove in production; Use proper authentication
+@csrf_exempt  
 def select_meal(request):
     """Student selects a meal, and it updates their meal balance"""
     student_id = request.POST.get("student_id")
@@ -60,13 +60,11 @@ def select_meal(request):
         if student.meal_balance <= 0:
             return JsonResponse({"success": False, "error": "No meals remaining"}, status=403)
 
-        # Deduct from balance
         student.meal_balance -= 1
         student.save()
 
-        # Save transaction
+        
         MealTransaction.objects.create(student=student, meal=meal)
-
         return JsonResponse({
             "success": True,
             "message": f"{student.user.username} collected {meal.name}",
@@ -94,3 +92,7 @@ def generate_meal_ticket(request, ticket_id):
 
     return response
 
+def get_audit_report(request):
+    """ Generate a monthly report of meals consumed """
+    report = MealTransaction.objects.values("student__user__username").annotate(total_meals=models.Count("id"))
+    return JsonResponse(list(report), safe=False)
