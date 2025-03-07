@@ -1,0 +1,42 @@
+// Full-stack college cafeteria management system with fingerprint authentication
+// Tech stack: React (Frontend), Node.js + Express (Backend), MongoDB (Database)
+// Roles: Caterer Supervisor, Student Affairs, Audit & PMIC
+// Features: Meal selection, ticket printing, meal tracking, reporting
+
+// Folder Structure:
+// /client - React frontend with Tailwind, shadcn/ui components
+// /server - Node.js backend with Express, Mongoose for MongoDB
+// /database - MongoDB setup with collections for students, meals, transactions
+
+// 1. FRONTEND:
+// - StudentCategory.js: Dropdown for selecting school category
+// - MealSelection.js: Displays available meals for each time (breakfast, lunch, dinner)
+// - TicketPrint.js: Generates and prints ticket for chosen meal
+
+// 2. BACKEND:
+// - authController.js: Handles fingerprint-based authentication
+// - mealController.js: CRUD operations for meals, allocations
+// - reportController.js: Generates monthly reports for Audit & PMIC
+
+// 3. DATABASE:
+// - Students collection: Stores student details and meal balances
+// - Meals collection: Stores daily meal options
+// - Transactions collection: Tracks meals collected, timestamps, and user roles
+
+// Setup Guide:
+// 1. Install Node.js, MongoDB, and React.
+// 2. Clone the repository and install dependencies using `npm install`.
+// 3. Configure .env files for database connection and ports.
+// 4. Run `npm run dev` to start the development server.
+
+// Security & Backup:
+// - JWT-based authentication, bcrypt for password hashing.
+// - Automated daily database backups using MongoDB Atlas.
+
+// Full code implementation for each component, API routes, and database models will be provided.
+
+
+
+
+mongo password:123456Ha
+username:cafetaria

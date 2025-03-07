@@ -76,12 +76,15 @@ WSGI_APPLICATION = 'cafeteria_system.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
-DATABASES = {
-    'default': dj_database_url.config(default=os.getenv("DATABASE_URL"))
-       # 'ENGINE': 'django.db.backends.sqlite3',
+ # 'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': BASE_DIR / 'db.sqlite3',
     
+DATABASES = {
+    'default': dj_database_url.config(
+        default="postgresql://cafeteria_db_0y0l_user:oZui7iuQU9EeAU4IORU73yfS4ydDN69V@dpg-cugcuidds78s738eolf0-a.oregon-postgres.render.com/cafeteria_db_0y0l"
+        
+    )
+      
 }
 
 
