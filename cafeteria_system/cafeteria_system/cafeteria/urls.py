@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home, authenticate_fingerprint, get_meals, select_meal, generate_meal_ticket
+from ..cafeteria_system.meals.views import home, authenticate_fingerprint, get_meals, select_meal, generate_meal_ticket
 
 urlpatterns = [
     path('', home, name='home'),

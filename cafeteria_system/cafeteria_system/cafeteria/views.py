@@ -1,8 +1,10 @@
 import os
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from cafeteria.models import Student, Meal, MealTransaction,AdminRole
+from cafeteria_system.cafeteria.models import Student, Meal, MealTransaction,AdminRole
 from django.http import HttpResponse
+from fingerprint.authenticate_fingerprint import some_function
+from fingerprint.enroll_fingerprint import another_function
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 
